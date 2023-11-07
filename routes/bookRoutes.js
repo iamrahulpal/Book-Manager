@@ -7,7 +7,20 @@ router.post(
   authenticate,
   require("../controllers/book/createBook").process
 ); // Create Book
-router.get("/",authenticate, require("../controllers/book/getAllBook").process); // Get all book
-router.get("/:id", authenticate,require("../controllers/book/getSingleBook").process); // Get single book
+router.get(
+  "/",
+  authenticate,
+  require("../controllers/book/getAllBook").process
+); // Get all book
+router.get(
+  "/:id",
+  authenticate,
+  require("../controllers/book/getSingleBook").process
+); // Get single book
+router.put(
+  "/:id",
+  authenticate,
+  require("../controllers/book/updateBook").process
+); // Update book
 
 module.exports = router;
