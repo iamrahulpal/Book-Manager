@@ -1,9 +1,11 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
+const mongo = require("./util/db");
 const dotenv = require("dotenv");
 dotenv.config();
 
+mongo.connect();
 app.use(bodyParser.json());
 
 app.use("/", (req, res) =>
