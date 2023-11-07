@@ -4,10 +4,13 @@ const bodyParser = require("body-parser");
 const mongo = require("./util/db");
 const dotenv = require("dotenv");
 dotenv.config();
+const userRoutes = require("./routes/userRoutes");
+
 
 mongo.connect();
 app.use(bodyParser.json());
 
+app.use("/api/user", userRoutes);
 app.use("/", (req, res) =>
   res.send("Hi, welcome to 'Book Manager'.")
 );
