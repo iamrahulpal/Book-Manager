@@ -2,6 +2,14 @@
 
 The Book Manager is a powerful Node.js application built with the Express framework and MongoDB as the database. It provides a wide range of features for managing books, including Create, Read, Update, and Delete operations.
 
+## Installation Guide
+- **Command** npm install
+- **Command** npm run start
+
+## ENV
+- **MONGO_URL** Add local mongodb url or atlas url.
+- **JWT_SECRET** Add Secret key any of your choice
+
 ## API Endpoints
 
 ### Create Book
