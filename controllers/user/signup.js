@@ -1,5 +1,7 @@
 const User = require("../../models/User");
 const bcrypt = require("bcryptjs");
+const validation = require("../../util/validate");
+const schema = require("../../jsonSchema/user/signup");
 
 class registerUser {
   async checkUser(email, username) {
@@ -13,6 +15,8 @@ class registerUser {
   }
   process = async (req, res) => {
     try {
+      validation(schema, req.body);
+
       const { firstName, lastName, username, email, password } = req.body;
 
       const isUser = await this.checkUser(email, username);
@@ -25,7 +29,7 @@ class registerUser {
         lastName,
         username,
         email,
-        password: hashedPassword
+        password: hashedPassword,
       });
 
       if (!newUser) throw "Failed to register";
