@@ -2,6 +2,10 @@
 
 The Book Manager is a powerful Node.js application built with the Express framework and MongoDB as the database. It provides a wide range of features for managing books, including Create, Read, Update, and Delete operations.
 
+This backend is hosted on [Vercel](https://book-manager-indol.vercel.app/).
+
+Note: If you counter any error like - "This Serverless Function has crashed" then please reload the page.
+
 ## Installation Guide
 - **Command** npm install
 - **Command** npm run start
@@ -61,6 +65,9 @@ The Book Manager is a powerful Node.js application built with the Express framew
 
 ## Usage
 
+To use this API, make requests to the specified endpoints using the provided HTTP methods. You can test the API using tools like Postman or directly integrate it into your applications. The API is hosted on Vercel for your convenience.
+
+Please ensure you include the required request parameters and handle the responses as per the described status codes and JSON structures.
 ---
 
 This README provides a brief overview of the Comprehensive Blog API and its available endpoints. For more detailed usage and examples, refer to the documentation and consider exploring the API interactively on the hosted Vercel instance.
