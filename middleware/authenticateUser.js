@@ -27,9 +27,11 @@ const authenticateUser = async (req, res, next) => {
     }
   }
 
-  if (!token) {
-    res.status(401);
-    throw new Error("Not authorized, no token");
+  if (!req.headers.authorization) {
+    res.status(400).json({
+      type: "Error",
+      error: "Not authorized, no token",
+    });
   }
 };
 
