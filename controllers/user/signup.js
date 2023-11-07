@@ -2,6 +2,7 @@ const User = require("../../models/User");
 const bcrypt = require("bcryptjs");
 const validation = require("../../util/validate");
 const schema = require("../../jsonSchema/user/signup");
+const jwt = require("jsonwebtoken");
 
 class registerUser {
   async checkUser(email, username) {
@@ -33,10 +34,15 @@ class registerUser {
       });
 
       if (!newUser) throw "Failed to register";
+      const token = jwt.sign(
+        { id: newUser._id, email: newUser.email },
+        process.env.JWT_SECRET,
+        { expiresIn: "1h" }
+      );
 
       res.status(201).json({
         type: "Success",
-        data: "User registered successfully",
+        data: token,
       });
     } catch (error) {
       res.status(400).json({

@@ -2,6 +2,7 @@ const User = require("../../models/User");
 const validation = require("../../util/validate");
 const schema = require("../../jsonSchema/user/login");
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 class loginUser {
   async checkUser(email, username) {
@@ -23,10 +24,15 @@ class loginUser {
       const validPassword = await bcrypt.compare(password, user.password);
       if (!validPassword) throw "password does not match";
 
-     
+      const token = jwt.sign(
+        { id: user._id, email: user.email },
+        process.env.JWT_SECRET,
+        { expiresIn: "12h" }
+      );
+
       res.status(201).json({
         type: "Success",
-        data: "logged in successfully",
+        data: token,
       });
     } catch (error) {
       res.status(400).json({
