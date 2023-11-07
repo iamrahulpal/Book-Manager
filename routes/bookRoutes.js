@@ -22,5 +22,10 @@ router.put(
   authenticate,
   require("../controllers/book/updateBook").process
 ); // Update book
+router.delete(
+  "/:id",
+  authenticate,
+  require("../controllers/book/deleteBook").process
+); // Delete book
 
 module.exports = router;
