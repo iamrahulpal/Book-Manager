@@ -3,13 +3,14 @@ const app = express();
 const bodyParser = require("body-parser");
 const mongo = require("./util/db");
 const dotenv = require("dotenv");
+const morgan = require("morgan");
 dotenv.config();
 const userRoutes = require("./routes/userRoutes");
 const bookRoutes = require("./routes/bookRoutes");
 
-
 mongo.connect();
 app.use(bodyParser.json());
+app.use(morgan("dev"));
 
 app.use("/api/user", userRoutes);
 app.use("/api/book", bookRoutes);

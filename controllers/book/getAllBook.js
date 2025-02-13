@@ -3,10 +3,12 @@ const Book = require("../../models/Book");
 class getAllBook {
   async process(req, res) {
     try {
+      console.log("Get all book");
       const books = await Book.find().sort({ timestamp: -1 });
+      console.log("🚀 ~ books:::", books);
 
-      if (books.length == 0) {
-        throw "Books not found";
+      if (books === null) {
+        throw "Failed to get books.";
       }
 
       res.status(200).json({
